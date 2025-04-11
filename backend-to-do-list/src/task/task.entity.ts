@@ -1,3 +1,4 @@
+import 'reflect-metadata'; 
 import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -5,16 +6,15 @@ export class Task {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column()
+    @Column('text')
     title: string;
 
-    @Column({ default: false })
+    @Column('boolean', { default: false })
     completed: boolean;
-
-    @Column({ default: '' })
-    describe: string;
     
-
+    @Column('text', { default: '' })
+    describe: string;    
+    
     @CreateDateColumn()
     createAt: Date;
 }
